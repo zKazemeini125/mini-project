@@ -12,7 +12,17 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'TypingChallenge';
-  str: string= faker.lorem.sentence();
+  randomText: string= faker.lorem.sentence();
+  inputText:string=''
+
+  onChangeInput(text:string){
+    this.inputText=text;
+  }
   
-  
+  comper(letterRandom:string, letterInput:string):string{
+    if(!letterInput){
+      return 'pending';
+    }
+    return letterRandom===letterInput? 'correct':'incorrect';
+  }
 }
